@@ -2,9 +2,20 @@ import React from 'react';
 import './App.css';
 // import { Message } from './Message.js';
 import { Summarise} from './Summarise.js';
-import { Summary } from './Summary.js'
+import { Summary } from './Summary.js';
+import ReactDOM from 'react-dom';
 
 let names = ["Jarek", "Ala", "Marek"];
+
+function reverseNames() {
+  names.reverse();
+  ReactDOM.render (<App/>, document.getElementById('root'));
+}
+
+function promoteName(name) {
+  names = [name, ...names.filter(val => val !== name)];
+  ReactDOM.render (<App/>, document.getElementById('root'));
+}
 
 const App = () => (
   <>
@@ -17,7 +28,7 @@ const App = () => (
       {names.map((item, index) => (
         <>
           <tr key={item}>
-              <Summary index={index} item={item}></Summary>
+              <Summary index={index} item={item} reverseCallback={reverseNames} promoteCallback={promoteName}></Summary>
           </tr>
         </>
       ))}
