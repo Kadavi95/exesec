@@ -17,3 +17,9 @@ export function CallbackButton(props) {
         </>
     )
 }
+
+CallbackButton.defaultProps = {
+    text: "Tekst domyślny",
+    theme: "warning"
+}
+
